@@ -386,7 +386,7 @@
                 formData.append('user_ip', userIP); 
                 
                 // Dit zorgt ervoor dat de input met name "google_phone" de +31 prefix meekrijgt in de sheet
-                formData.set('google_phone', '+31 ' + phoneInput); 
+                formData.set('google_phone', "'+31 " + phoneInput); 
                 
                 fetch(scriptURL, { method: 'POST', body: formData })
                     .then(() => triggerAppRedirect())
